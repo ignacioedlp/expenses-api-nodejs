@@ -43,7 +43,6 @@ router.get("/budget/byType/:typeBudget", async function (req, res, next) {
 //!POST: /api/v1/budget
 router.post("/budget", async function (req, res, next) {
   const { type, amount, concept } = req.body;
-  console.log(req.body);
   await prisma.budget.create({
     data: {
       type,
@@ -61,7 +60,6 @@ router.post("/budget", async function (req, res, next) {
 router.put("/budget/:idBudget", async function (req, res, next) {
   const { idBudget } = req.params;
   const { amount, concept } = req.body;
-  console.log(req.body);
   await prisma.budget.update({
     where: {
       id: Number(idBudget),
