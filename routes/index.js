@@ -60,17 +60,15 @@ router.post("/budget", async function (req, res, next) {
 //!PUT: /api/v1/budget/:idBudget
 router.put("/budget/:idBudget", async function (req, res, next) {
   const { idBudget } = req.params;
-  const { type, amount, concept } = req.body;
+  const { amount, concept } = req.body;
   console.log(req.body);
   await prisma.budget.update({
     where: {
       id: Number(idBudget),
     },
     data: {
-      type,
       amount,
       concept,
-      updatedAt: new Date(),
     },
   });
   res.json({
@@ -103,7 +101,7 @@ router.get("/Totalbalance", async function (req, res, next) {
   });
 });
 
-//!DELETE /api/v1/budget/:id
+//!DELETE /api/v1/budget/:idBudget
 router.delete("/budget/:idBudget", async function (req, res, next) {
   const { idBudget } = req.params;
   await prisma.budget.delete({
