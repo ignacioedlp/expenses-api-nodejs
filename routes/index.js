@@ -46,7 +46,7 @@ router.post("/budget", async function (req, res, next) {
   await prisma.budget.create({
     data: {
       type,
-      amount,
+      Number(amount),
       concept,
       createdAt: new Date(),
     },
@@ -65,7 +65,7 @@ router.put("/budget/:idBudget", async function (req, res, next) {
       id: Number(idBudget),
     },
     data: {
-      amount,
+      Number(amount),
       concept,
     },
   });
